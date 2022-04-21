@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>CSS Practice: CSS Corner Cafe</title>
+    <style>
+    body {
+    background: rgb(235, 233, 236);
+    text-align: center;
+    color: rgb(126, 81, 138);
+ 
+}
+
+h1 {
+    color: rgb(126, 81, 138);
+    font: 48px 'Courier New', Courier, monospace;
+    padding: 10px;
+}
+
+h2 {
+    color: rgb(126, 81, 138);
+    font: 32px 'Courier New', Courier, monospace ;
+    text-decoration: underline double 1px;
+}
+
+table {
+    padding-left: 20%;
+    font-family:'Courier New', Courier, monospace;
+    text-align: left;
+    width: 80%;
+}
+
+thead {
+    font-size: 14px;
+    text-decoration: underline double 1px;
+    color: rgb(191, 176, 206);
+    text-align: left;
+}
+
+tbody {
+    font-size: 20px;  
+}
+
+label {
+    font-family:'Courier New', Courier, monospace;
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    padding: 5px;
+}
+
+#submit-btn {
+    color: rgb(126, 81, 138);
+    font-family:'Courier New', Courier, monospace;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    display: block;
+}
+
+#name:hover {
+    background-color: rgb(213, 176, 223);
+    opacity: 80%;
+}
+
+#comments {
+    height: 50px;
+}
+
+#comments:hover {
+    background-color: rgb(213, 176, 223);
+    opacity: 80%;
+}
+
+
+#submit-btn:hover {
+    background-color: rgb(213, 176, 223);
+    opacity: 80%;
+}
+
+#meal {
+    opacity: 80%;
+    color: rgb(126, 81, 138);
+    width: 20%;
+}
+
+.menu {
+    background-color: rgb(237, 223, 243);
+     border: double black 4px;
+     border-radius: 5px;
+     margin: 50px;
+     padding-bottom: 30px;
+}
+
+.review {
+    background-color: rgb(237, 223, 243);
+     border:  double black 4px;
+     border-radius: 5px;
+     margin: 50px;
+     padding-bottom: 30px;
+}
+
+.contact {
+    background-color: rgb(237, 223, 243);
+    border:  double black 4px;
+    border-radius: 5px;
+    margin: 50px; 
+    padding-bottom: 30px;
+}
+
+a {
+    color:rgb(149, 91, 199);
+    text-decoration: none;
+}
+
+a:hover {
+    opacity: 80%;
+    background-color: rgb(213, 176, 223);
+}
+
+img {
+    height: 60px;
+}
+
+option {
+    font-family:'Courier New', Courier, monospace;
+    background-color: rgb(213, 176, 223);
+    opacity: 80%;
+}
+
+.meal{
+    font-family:'Courier New', Courier, monospace;
+}
+
+p {
+    font-family:'Courier New', Courier, monospace;
+}
+
+address {
+    font-family:'Courier New', Courier, monospace;
+}
+    </style>
+</head>
+
+<body>
+
+    <h1><img src="../Images/Beta.png" alt="beta" />CSS Corner Cafe<img src="../Images/Beta.png" alt="beta" /></h1>
+    <section class="menu">
+        <h2>Menu</h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Coffee</td>
+                    <td>$2</td>
+                </tr>
+                <tr>
+                    <td>Tea</td>
+                    <td>$1.50</td>
+                </tr>
+                <tr>
+                    <td>Blueberry Pancakes</td>
+                    <td>$6</td>
+                </tr>
+                <tr>
+                    <td>French Crepes</td>
+                    <td>$7</td>
+                </tr>
+                <tr>
+                    <td>Chicken & Waffles</td>
+                    <td>$12</td>
+                </tr>
+                <tr>
+                    <td>Bacon & Eggs</td>
+                    <td>$10</td>
+                </tr>
+                <tr>
+                    <td>Biscuits & Gravy</td>
+                    <td>$6</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+
+
+    <section class="review">
+
+        <h2>Submit Your Review</h2>
+
+        <form action="https://us-central1-nucamp-production.cloudfunctions.net/post/formdata" method="post">
+
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" />
+
+            <label for="comments">Comments</label>
+            <input type="text" id="comments" name="comments" />
+
+            <br />
+            <label for="meal">Favorite Meal</label>
+            <select class="meal" id="meal" name="meal">
+                <option value="Select" selected>Select</option>
+                <option value="Pancakes">Pancakes</option>
+                <option value="Crepes">Crepes</option>
+                <option value="Waffles">Waffles</option>
+                <option value="Bacon">Bacon</option>
+                <option value="Biscuits">Biscuits</option>
+            </select>
+
+            <label for="rating">Your Rating:</label>
+            1 <input type="range" id="rating" name="rating" min="1" max="5" /> 5
+            <input type="submit" id="submit-btn" />
+
+        </form>
+    </section>
+
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>Call us at: <a href="tel:+15555551212">1-555-555-1212</a></p>
+        <address>
+            CSS Corner Cafe<br />
+            101 W Main St<br />
+            Bellevue, WA 98004
+        </address>
+    </section>
+</body>
+</html>
