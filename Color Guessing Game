@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Color Guessing Game</title>
+    <style>
+        body {
+            background-image: url("https://images.creativemarket.com/0.1.0/ps/3490512/910/607/m1/fpnw/wm0/1-.jpg?1509295453&s=5748c5d27d83a3513533fbf90a08d5af&fmt=webp");
+            background-repeat: repeat;
+        }
+
+        h1 {
+            margin-top: 140px;
+            font: bold 90px cambria;
+            text-align: center;
+            letter-spacing: 5px;
+        }
+
+        button {
+            font: bold 28px cambria;
+            background: rgb(195, 100, 233);
+            border-radius: 5px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 40%;
+            padding: 20px;
+            letter-spacing: 5px;
+        }
+
+        button:hover {
+            background-color: aqua;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <h1>Color Guessing Game</h1>
+    <button type="button" onclick="runGame()">Start Game</button>
+
+    <script>
+        const COLORS_ARRAY = ['blue', 'cyan', 'gold', 'gray', 'green', 'magenta', 'orange', 'white', 'red', 'yellow'];
+        let numTries = 0;
+
+        function runGame() {
+            let guess = '';
+            let correct = false;
+
+            const targetIndex = Math.floor(Math.random() * COLORS_ARRAY.length);
+            const target = COLORS_ARRAY[targetIndex];
+            console.log(target);
+
+            do {
+                guess = prompt('I am thinking of one of these colors:\n\n' + COLORS_ARRAY.sort().join(', ') +
+                    '\n\nWhat color am I thinking of?\n');
+                if (guess === null) {
+                    alert('Better luck next time!')
+                    return;
+                }
+                numTries += 1;
+                correct = checkGuess(guess.toLowerCase(), target);
+            } while (!correct);
+
+            alert('Congrats you chose the correct color after ' + numTries + ' tries!');
+            document.body.style.background = guess;
+        }
+
+
+        function checkGuess(guess, target) {
+            let correct = false;
+
+            if (!COLORS_ARRAY.includes(guess)) {
+                alert('This color is not on the list! This is try number ' + numTries + '!');
+            } else if (guess > target) {
+                alert('The color is a higher target! This is try number ' + numTries + '!');
+            } else if (guess < target) {
+                alert('The color is a lower target! This is try number ' + numTries + '!');
+            } else {
+                correct = true;
+            }
+            return correct;
+        }
+
+
+    </script>
+</body>
+
+</html>
