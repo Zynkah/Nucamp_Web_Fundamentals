@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Matching Game</title>
+    <style>
+        body {
+            font: bold 18px 'Courier New', Courier, monospace;
+            background-image: url('https://telcomcayuga.com/wp-content/uploads/2019/09/tech-background.jpg');
+        }
+
+        section {
+            background-color: rgb(231, 231, 146);
+            border-radius: 5px;
+            border-bottom: 3px solid black;
+            width: fit-content;
+            padding: 0px 30px;
+            margin: 50px 300px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 60px;
+        }
+
+        img {
+            position: absolute;
+        }
+
+        div {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+        }
+
+        #rightSide {
+            left: 500px;
+            border-left: 3px solid;
+        }
+    </style>
+</head>
+
+<body onload="generateFaces()">
+
+    <section>
+        <h1>Matching Game</h1>
+        <p>Click on the smiling face on the left.</p>
+    </section>
+
+    <div id="leftSide"></div>
+    <div id="rightSide"></div>
+
+
+    <script>
+
+        let numberOfFaces = 5;
+        const theLeftSide = document.getElementById('leftSide');
+        const theRightSide = document.getElementById('rightSide');
+        let numTries = 0;
+
+        function generateFaces() {
+
+            for (let i = 0; i < numberOfFaces; i++) {
+                const face = document.createElement('img');
+                face.src = '../images/smile.png';
+                const randomTop = Math.floor(Math.random() * 400) + 1;
+                const randomLeft = Math.floor(Math.random() * 400) + 1;
+                face.style.top = randomTop + 'px';
+                face.style.left = randomLeft + 'px';
+                theLeftSide.appendChild(face);
+            }
+
+            /*theLeftSide.lastChild.style.border = '1px solid red';
+            theLeftSide.lastChild.style.backgroundColor = 'aqua';*/
+
+            const leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
+
+            theLeftSide.lastChild.addEventListener('click', nextLevel);
+            document.body.addEventListener('click', gameOver);
+        }
+
+        function nextLevel() {
+            event.stopPropagation();
+            numberOfFaces += 5;
+            numTries += 1;
+
+            while (theLeftSide.firstChild) {
+                theLeftSide.removeChild(theLeftSide.firstChild);
+            }
+            while (theRightSide.firstChild) {
+                theRightSide.removeChild(theRightSide.firstChild);
+            }
+            generateFaces();
+        }
+
+        function gameOver() {
+            alert('Game Over! You made it ' + numTries + ' rounds! Hit OK to try again!') ? "" : location.reload();
+            document.body.removeEventListener(gameOver);
+            theLeftSide.lastChild.removeEventListener(nextLevel);
+        }
+
+    </script>
+</body>
+
+</html>
